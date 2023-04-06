@@ -49,11 +49,11 @@ export const App = () => {
   }, [page, query]);
 
   const getQuery = q => {
-    // if (this.state.query !== query) {
+    if (query !== q) {
     setQuery(q);
     setPage(1);
     setPhotos([]);
-    // }
+    }
   };
 
   const loadMore = () => {
