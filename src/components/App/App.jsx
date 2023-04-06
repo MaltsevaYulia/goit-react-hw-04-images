@@ -7,6 +7,10 @@ import { Modal } from '../Modal/Modal';
 import { AppDiv } from './App.styled';
 import fetchPhotos from '../../api/api';
 
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 export const App = () => {
   const [photos, setPhotos] = useState([]);
   const [query, setQuery] = useState('');
@@ -33,7 +37,10 @@ export const App = () => {
       } catch (error) {
         console.log(error);
         setIsLoadMore(false);
-        alert('Sorry, there are no images. Please try again.');
+        const notify = () =>
+          toast('Sorry, there are no images. Please try again.');
+        notify()
+        // alert('Sorry, there are no images. Please try again.');
       } finally {
         setIsLoading(false);
       }
@@ -75,6 +82,7 @@ export const App = () => {
       {isLoading && <Loader />}
       {photos && isLoadMore && !isLoading && <Button loadMore={loadMore} />}
       {isModalShow && <Modal onClose={toggleModal} url={largeUrl} />}
+      <ToastContainer />
     </AppDiv>
   );
 };

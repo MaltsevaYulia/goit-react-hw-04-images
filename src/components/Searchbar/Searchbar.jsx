@@ -8,12 +8,11 @@ import {
 } from './Searchbar.styled';
 import PropTypes from 'prop-types';
 
+
 export const Searchbar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
 
-  const handleChange = e => {
-    setQuery(e.target.value);
-  };
+  const handleChange = e => setQuery(e.target.value);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -40,9 +39,6 @@ export const Searchbar = ({ onSubmit }) => {
     </Header>
   );
 };
-
-
-
 
 // export class OldSearchbar extends Component {
 //   state = {
